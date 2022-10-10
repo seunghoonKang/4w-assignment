@@ -21,6 +21,7 @@ export default function Todo({ todo }) {
         onClick={() => {
           navigate(`/detail/${id}`);
         }}
+        id={id}
       >
         상세보기
       </button>
