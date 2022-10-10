@@ -2,8 +2,10 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteTodo, isDoneTodo } from "../redux/modules/todos";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 export default function Todo({ todo }) {
+  const navigate = useNavigate();
   const { id, title, content, isDone } = todo;
   const dispatch = useDispatch();
   const onRemove = () => {
@@ -14,11 +16,17 @@ export default function Todo({ todo }) {
   };
 
   return (
-    <div>
-      <button>상세보기</button>
+    <TodoContainer>
+      <button
+        onClick={() => {
+          navigate(`/detail/${id}`);
+        }}
+      >
+        상세보기
+      </button>
       <h2>{title}</h2>
       <p>{content}</p>
-      <div>
+      <ButtonContainer>
         <button onClick={onRemove}>삭제하기</button>
 
         {isDone ? (
@@ -26,7 +34,20 @@ export default function Todo({ todo }) {
         ) : (
           <button onClick={onIsDone}>완료</button>
         )}
-      </div>
-    </div>
+      </ButtonContainer>
+    </TodoContainer>
   );
 }
+
+const TodoContainer = styled.div`
+  width: 200px;
+  height: 200px;
+  border: 5px solid tomato;
+  border-radius: 20px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-left: 20%;
+`;
