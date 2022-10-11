@@ -27,11 +27,11 @@ export default function Detail() {
 }
 
 const DetailDiv = styled.div`
-  width: 40rem;
+  width: 30rem;
   /* height: 30rem; */
   margin: auto;
   background: white;
-  margin-top: 20%;
+  margin-top: 10%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
