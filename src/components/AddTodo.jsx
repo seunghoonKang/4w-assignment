@@ -66,18 +66,21 @@ export default function AddTodo() {
 }
 
 const FormLabel = styled.label`
+  min-width: 30px;
   margin: 20px;
 `;
 
 const Forms = styled.form`
   height: 100px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
 `;
 
 const InputDiv = styled.div`
   flex: 1;
+  display: flex;
+  flex-wrap: nowrap;
 `;
 
 const InputItem = styled.input`
