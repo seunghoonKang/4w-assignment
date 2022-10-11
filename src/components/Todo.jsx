@@ -17,23 +17,35 @@ export default function Todo({ todo }) {
 
   return (
     <TodoContainer>
-      <button
+      <GotoDetail
         onClick={() => {
           navigate(`/detail/${id}`);
         }}
         id={id}
       >
         상세보기
-      </button>
+      </GotoDetail>
       <h2>{title}</h2>
       <p>{content}</p>
       <ButtonContainer>
-        <button onClick={onRemove}>삭제하기</button>
+        <DeleteBtn onClick={onRemove}>삭제하기</DeleteBtn>
 
         {isDone ? (
-          <button onClick={onIsDone}>취소</button>
+          <ToggleBtn
+            bgColor="#d48788"
+            hoverBgColor="#e41c20"
+            onClick={onIsDone}
+          >
+            취소
+          </ToggleBtn>
         ) : (
-          <button onClick={onIsDone}>완료</button>
+          <ToggleBtn
+            bgColor="#92abc5"
+            hoverBgColor="#4189d7"
+            onClick={onIsDone}
+          >
+            완료
+          </ToggleBtn>
         )}
       </ButtonContainer>
     </TodoContainer>
@@ -42,13 +54,57 @@ export default function Todo({ todo }) {
 
 const TodoContainer = styled.div`
   width: 200px;
-  height: 200px;
-  border: 5px solid tomato;
+  /* height: 200px; */
   border-radius: 20px;
+  background: #dedede;
+  box-shadow: 20px 20px 60px #bdbdbd, -20px -20px 60px #ffffff;
+  padding: 10px;
+  word-break: break-all;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   gap: 20px;
-  margin-left: 20%;
+  justify-content: center;
+`;
+
+const GotoDetail = styled.button`
+  border: none;
+  border-radius: 10px;
+  background: #a5bed9;
+
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background: #3282d8;
+    transition: 0.2s ease-in;
+  }
+`;
+
+const DeleteBtn = styled.button`
+  border: none;
+  border-radius: 10px;
+  background: #bfb9b9;
+  width: 80px;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    background: #da43aa;
+    transition: 0.2s ease-in;
+  }
+`;
+
+const ToggleBtn = styled.button`
+  border: none;
+  border-radius: 10px;
+  background: ${(props) => props.bgColor};
+  width: 80px;
+  height: 40px;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    background: ${(props) => props.hoverBgColor};
+    transition: 0.2s ease-in;
+  }
 `;

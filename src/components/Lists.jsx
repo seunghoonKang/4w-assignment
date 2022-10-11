@@ -10,22 +10,31 @@ export default function Lists() {
 
   return (
     <ListContainer>
-      <RenderTodoList
-        rendertitle="Working"
-        todos={workingTodos}
-      ></RenderTodoList>
-      <RenderTodoList
-        rendertitle="Complete"
-        todos={completedTodos}
-      ></RenderTodoList>
+      <ListSecondContainer>
+        <H2Toggle wordColor="red">Working🔥</H2Toggle>
+
+        <RenderTodoList
+          rendertitle="Working"
+          todos={workingTodos}
+        ></RenderTodoList>
+      </ListSecondContainer>
+
+      <ListSecondContainer>
+        <H2Toggle wordColor="blue">Completed😎</H2Toggle>
+
+        <RenderTodoList
+          rendertitle="Complete"
+          todos={completedTodos}
+        ></RenderTodoList>
+      </ListSecondContainer>
     </ListContainer>
   );
 }
 
 const RenderTodoList = ({ todos, rendertitle }) => {
   return (
-    <div>
-      <h2>{rendertitle}</h2>
+    <RenderListContainer>
+      {/* <h2>{rendertitle}</h2> */}
       {todos.map((todo) => {
         return (
           <div key={todo.id}>
@@ -33,8 +42,24 @@ const RenderTodoList = ({ todos, rendertitle }) => {
           </div>
         );
       })}
-    </div>
+    </RenderListContainer>
   );
 };
 
-const ListContainer = styled.div``;
+const ListContainer = styled.div`
+  display: flex;
+`;
+
+const ListSecondContainer = styled.div`
+  flex: 1;
+`;
+
+const RenderListContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+`;
+
+const H2Toggle = styled.h2`
+  color: ${(props) => props.wordColor};
+`;
