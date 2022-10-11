@@ -69,6 +69,7 @@ const ButtonContainer = styled.div`
 `;
 
 const GotoDetail = styled.button`
+  height: 30px;
   border: none;
   border-radius: 10px;
   background: #a5bed9;

@@ -89,6 +89,16 @@ const InputItem = styled.input`
   background: #dedede;
   box-shadow: 20px 20px 80px #bdbdbd, -20px -20px 60px #ffffff;
   text-align: center;
+
+  ::placeholder {
+    font-weight: 800;
+  }
+  &:focus {
+    background-color: black;
+    color: white;
+    outline: none;
+    transition: 0.3s all ease-in-out;
+  }
 `;
 
 const AddDIv = styled.div`
