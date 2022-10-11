@@ -36,20 +36,20 @@ const initialState = {
   todos: [
     {
       id: 1,
-      title: "리액ㅌ..",
-      content: "리덕스..",
+      title: "리액트 공부합시다",
+      content: "리액트 ..!",
       isDone: false,
     },
     {
       id: 2,
-      title: "리액ㅌ..",
-      content: "리덕스..",
+      title: "리덕스도 공부합시다",
+      content: "리덕스....",
       isDone: true,
     },
     {
       id: 3,
-      title: "리액ㅌ..",
-      content: "리덕스..",
+      title: "scss 공부합시다",
+      content: "스타일드컴포넌츠..",
       isDone: true,
     },
   ],

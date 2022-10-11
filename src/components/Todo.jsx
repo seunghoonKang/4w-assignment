@@ -53,7 +53,7 @@ export default function Todo({ todo }) {
 }
 
 const TodoContainer = styled.div`
-  width: 200px;
+  width: 270px;
   /* height: 200px; */
   border-radius: 20px;
   background: #dedede;
