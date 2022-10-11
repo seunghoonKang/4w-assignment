@@ -37,6 +37,7 @@ export default function AddTodo() {
           <FormLabel htmlFor="title">제목</FormLabel>
           <InputItem
             type="text"
+            minLength="3"
             maxLength="20"
             placeholder="제목을 입력하세요 (최대 20자)"
             id="title"
@@ -49,6 +50,7 @@ export default function AddTodo() {
           <FormLabel htmlFor="content">내용</FormLabel>
           <InputItem
             type="text"
+            minLength="10"
             maxLength="50"
             placeholder="내용을 입력하세요 (최대 50자)"
             id="content"
