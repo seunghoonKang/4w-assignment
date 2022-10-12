@@ -6,22 +6,22 @@ import { findTodo } from "../redux/modules/todos";
 
 export default function Detail() {
   //현재 되는 코드..
-  const todos = useSelector((state) => state.reducer.todos);
-  console.log(todos);
+  // const todos = useSelector((state) => state.reducer.todos);
+  // console.log(todos);
   const param = useParams();
-  const DetailTodo = todos.find((todo) => todo.id === +param.id);
-  const { id, title, content } = DetailTodo;
+  // const DetailTodo = todos.find((todo) => todo.id === +param.id);
+  // const { id, title, content } = DetailTodo;
 
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(findTodo(+param.id));
-  // }, []);
+  useEffect(() => {
+    dispatch(findTodo(+param.id));
+  }, [dispatch, param]);
 
-  // const todos = useSelector((state) => state.reducer.todos);
-  // const { id, title, content } = todos;
-  // console.log(todos);
+  const todo = useSelector((state) => state.reducer.todo);
+  const { id, title, content } = todo;
+  console.log(todo);
 
   return (
     <DetailDiv>

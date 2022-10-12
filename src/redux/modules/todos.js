@@ -61,6 +61,7 @@ const initialState = {
       isDone: true,
     },
   ],
+  todo: {},
 };
 
 //리듀서
@@ -92,14 +93,10 @@ const reducer = (state = initialState, action) => {
       };
     case FIND_TODO:
       return {
-        todos: [...state.todos].find((todo) => todo.id === action.id),
+        ...state,
+        todo: [...state.todos].find((todo) => todo.id === action.id),
       };
-    // return {
-    //   ...state,
-    //   todos: state.todos.find((todo) => {
-    //     return todo.id === action.id;
-    //   }),
-    // };
+
     default:
       return state;
   }
