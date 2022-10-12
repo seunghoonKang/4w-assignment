@@ -2,6 +2,7 @@
 const ADD_TODO = "ADD_TODO";
 const DELETE_TODO = "DELETE_TODO";
 const ISDONE_TODO = "ISDONE_TODO";
+const FIND_TODO = "FIND_TODO";
 
 //액션 크리에이터 정의
 let newId = 3;
@@ -27,6 +28,13 @@ export const deleteTodo = (id) => {
 export const isDoneTodo = (id) => {
   return {
     type: ISDONE_TODO,
+    id,
+  };
+};
+
+export const findTodo = (id) => {
+  return {
+    type: FIND_TODO,
     id,
   };
 };
@@ -57,7 +65,6 @@ const initialState = {
 
 //리듀서
 const reducer = (state = initialState, action) => {
-  // console.log(action);
   switch (action.type) {
     case ADD_TODO:
       return {
@@ -65,9 +72,13 @@ const reducer = (state = initialState, action) => {
         todos: [...state.todos, action.todo],
       };
     case DELETE_TODO:
+      console.log("...state.todos", ...state.todos, "[...state.todos]", [
+        ...state.todos,
+      ]);
+      // console.log(state);
       return {
         ...state,
-        todos: [...state.todos.filter((todo) => todo.id !== action.id)],
+        todos: state.todos.filter((todo) => todo.id !== action.id),
       };
     case ISDONE_TODO:
       // const findIdx = [
@@ -75,12 +86,20 @@ const reducer = (state = initialState, action) => {
       // ];
       return {
         ...state,
-        todos: [
-          ...state.todos.map((todo) =>
-            todo.id === action.id ? { ...todo, isDone: !todo.isDone } : todo
-          ),
-        ],
+        todos: state.todos.map((todo) =>
+          todo.id === action.id ? { ...todo, isDone: !todo.isDone } : todo
+        ),
       };
+    case FIND_TODO:
+      return {
+        todos: [...state.todos].find((todo) => todo.id === action.id),
+      };
+    // return {
+    //   ...state,
+    //   todos: state.todos.find((todo) => {
+    //     return todo.id === action.id;
+    //   }),
+    // };
     default:
       return state;
   }

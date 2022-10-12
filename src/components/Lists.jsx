@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Todo from "./Todo";
 import styled from "styled-components";
 
 export default function Lists() {
   const todos = useSelector((state) => state.reducer.todos);
+  console.log(todos);
   const completedTodos = todos.filter((todo) => todo.isDone === true);
   const workingTodos = todos.filter((todo) => todo.isDone !== true);
 
@@ -31,10 +32,9 @@ export default function Lists() {
   );
 }
 
-const RenderTodoList = ({ todos, rendertitle }) => {
+const RenderTodoList = ({ todos }) => {
   return (
     <RenderListContainer>
-      {/* <h2>{rendertitle}</h2> */}
       {todos.map((todo) => {
         return (
           <div key={todo.id}>

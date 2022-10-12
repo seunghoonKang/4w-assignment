@@ -1,19 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { findTodo } from "../redux/modules/todos";
 
 export default function Detail() {
+  //현재 되는 코드..
   const todos = useSelector((state) => state.reducer.todos);
+  console.log(todos);
   const param = useParams();
-  const navigate = useNavigate();
-
   const DetailTodo = todos.find((todo) => todo.id === +param.id);
   const { id, title, content } = DetailTodo;
 
+  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(findTodo(+param.id));
+  // }, []);
+
+  // const todos = useSelector((state) => state.reducer.todos);
+  // const { id, title, content } = todos;
+  // console.log(todos);
+
   return (
     <DetailDiv>
-      {/* <label>id</label> */}
       <IdPtag>id: {id}</IdPtag>
       <label>제목</label>
       <TitleDiv>
@@ -21,7 +32,14 @@ export default function Detail() {
       </TitleDiv>
       <label>내용</label>
       <ContentDiv>{content}</ContentDiv>
-      <BackBtn onClick={() => navigate(-1)}>뒤로가기</BackBtn>
+      <BackBtn
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(-1);
+        }}
+      >
+        뒤로가기
+      </BackBtn>
     </DetailDiv>
   );
 }
